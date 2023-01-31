@@ -23,7 +23,8 @@ While analyzing the software, I discovered a file "kerne132.dll" within the syst
 
 Indicators of our system being compromised are the dates/time in which they were compiled, the hashes of the DLL and EXE files, and the location of the DLL file. The compilation time of both files is so close that it can be presumed that the files came together and, most likely, were created by the same person. The location of the file in question "kerne132.dll" is located within "system32", an indication that this file means to manipulate our system. Lastly, the hashes of both files are:
 
-MD5 Hash (EXE):  bb7425b82141a1c0f7d60e5106676bb1
+MD5 Hash (EXE):  bb7425b82141a1c0f7d60e5106676bb1\n
+
 MD5 Hash (DLL):  290934c61de9176ad682ffdd65f0a669
 
 ### Mitigations
