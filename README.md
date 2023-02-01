@@ -18,7 +18,7 @@ We currently have not ran software on our machines, however this section will be
 ### Executive Summary
 
 * The EXE and DLL files seem to be malware
-* The DLL file appears to be mimicing kernel32.dll and trying to corrupt our system32 file.
+* The DLL file appears to be mimicking kernel32.dll and trying to corrupt our system32 file.
 * Both programs appear to have come from the same person, leading me to assume that the EXE file is meant to run the DLL file.
 
 ### Indicators of Compromise
