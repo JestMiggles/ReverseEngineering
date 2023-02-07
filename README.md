@@ -64,3 +64,26 @@ To mitigate the damage this program can cause, we can send the hash out to all t
 ### Evidence
 
 When first using PEview on the file, we will see that it is packed and therefore some of the information is compacted and hard to read. So, to get around this we use "upx" to unpack the file so that we can fully see what is inside the file. Afterwards, when we inspect the contents we find some interesting data. We find that this EXE file is running a lot of programs, such as "InternetOpenUrlA" and "InternetOpenA" which are programs that are used to connect us to the internet and send us to a URL. We can also see in the "SECTION .data" section that there is a URL within the file "http://www.malwareanalysisbook.com". Although it is unclear what the purpose of the website is because it is no longer up, I assume it would've been used to download malware to the host computer. Lastly, we see that the program utilizes the kernel32.dll file, most likely trying to hide itself from Windows Defender.
+
+## Lab 1-3
+### Executive Summary
+
+After analyzing the file Lab01-03.exe, we find that:
+* The file is packed with FSG
+* Utilizes functions as main attack from information available
+
+### Indicators of Compromise
+
+There are not a lot of indicators to go off of for this file since it is packed and unable to be packed with any of the tools we have present.
+
+MD5 Hash: 9c5c27494c28ed0b14853b246b113145
+
+### Mitigations
+
+The best way to mitigate the damage that this file can do at the present moment is to search all machines on your network for files matching the target files hash as shown above.
+
+### Evidence
+
+First, I decided to analyze it in PEview. After going through most of the files I found nothing really of note except for in the "SECTION" part of the Lab. In this part, I found two functions of relevance: LoadLibraryA and GetProcAddress. However, without further information, I was unable to tell exactly the purpose of these functions for the malware.
+
+Second, I ran it through Dependency Walker and found evidence for the malware being packed. Unable to unpack the malware using UPX I decided to look into the back of the book for how to unpack this file and found that you need to use FSG (Fast, Small, Good) in order to unpack it, however I could 
