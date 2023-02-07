@@ -86,4 +86,12 @@ The best way to mitigate the damage that this file can do at the present moment 
 
 First, I decided to analyze it in PEview. After going through most of the files I found nothing really of note except for in the "SECTION" part of the Lab. In this part, I found two functions of relevance: LoadLibraryA and GetProcAddress. However, without further information, I was unable to tell exactly the purpose of these functions for the malware.
 
-Second, I ran it through Dependency Walker and found evidence for the malware being packed. Unable to unpack the malware using UPX I decided to look into the back of the book for how to unpack this file and found that you need to use FSG (Fast, Small, Good) in order to unpack it, however I could 
+Second, I ran it through Dependency Walker and found evidence for the malware being packed. Unable to unpack the malware using UPX I decided to look into the back of the book for how to unpack this file and found that you need to use FSG (Fast, Small, Good) in order to unpack it, however I could not find a reliable source that was able to unpack the file.
+
+I also inserted the file into VirusTotal and found that the malware started circulating around 2011-03-26 and seem consistent with being from our book. Otherwise, I found no other important information pertaining to my report.
+
+## Lab 1-4
+### Executive Summary
+
+After analyzing the file Lab01-04.exe, we find that:
+*
