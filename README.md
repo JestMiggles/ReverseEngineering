@@ -94,4 +94,23 @@ I also inserted the file into VirusTotal and found that the malware started circ
 ### Executive Summary
 
 After analyzing the file Lab01-04.exe, we find that:
-*
+* This is indeed malware
+* It tracks your information, such as keyboard input and files accessed.
+* It runs programs in your system32 directory.
+* Website URL and website programs.
+
+### Indicators of Compromise
+
+Some indicators that our system has been compromised are the files that are being installed on our system and the location that these files are being downloaded in. The files being downloaded on our system that are suspiscious are: wupdmgr.exe and winup.exe. These may correlate with a website that we found within the files: http://practicalmalwareanalysis.com/updater.exe
+
+MD5 Hash: 625ac05fd47adc3c63700c3b30de79ab
+
+### Mitigations
+
+Ways to mitigate the damage that this file can have on your system or network is to send the hash code to all computers on the network to prevent the spread or remove it on compromised machines. Another way would be to block the url stated above from sending packets or dropping packets that this network sends to your machines.
+
+### Evidence
+
+Putting the file into VirusTotal shows us that this file has been circulating since 2011-07-05 and that it was *supposedly* created 2019-08-30 which I personally found funny.
+
+Using PEview and Dependency Walker, we are able to see that this file is, as far as I could tell, not packed or otherwise encrypted. Looking through the "SECTION .data" part of our file using PEview reveals that our program has created two files in our system32 directory: wupdmgr.exe and winup.exe. After looking up these files online I found that these are used to track keyboard input, files that are being accessed, and open Internet and LAN ports.
