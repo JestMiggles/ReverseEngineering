@@ -177,14 +177,25 @@ Now for our dynamic analysis. First, we need to find out how to run the malware.
 ## Lab 3-3
 ### Executive Summary
 
-
+After analyzing the software, I found that:
+* It is not packed
+* It creates multiple different files and programs
+* Seems to be logging our information, however not sending it anywhere.
 
 ### Indicators of Compromise
 
+Some indicators that we have been compromised are how the file changes values in other files and creates other processes.
 
+MD5 Hash: e2bf42217a67e46433da8b6f4507219e 
 
 ### Mitigations
 
-
+Ways to mitigate the impact this program impacts you and others on your network are to check all systems for files that match the MD5 hash above and look for the names of filesit creates, such as practicalmalwareanalysis.log.
 
 ### Evidence
+
+First, we use VirusTotal on the EXE file to find that it comes up as malware on 61/71 sites it was tested on. Then, we see that the file is not packed, meaning that this file should be easier to examine.
+
+For our static analysis, I first decided to look into PEview to see what functions we had available. Nothing sticks out too much, however I will be looking closely at the ReadFile and WriteFile functions moving forward. Using strings, we find that there are some interesting files being used, such as \svchost.exe. We don't find much else after looking at Procmon or strings.
+
+For our dynamic analysis, if we watch Process Explorer while we run the EXE file, we will see it run, create a child process "svchost.exe", then quickly die and leave the child process alone. If we run strings on the child process and look at the image they look the same, however if we look at the memory strings we find, at the bottom, a file practicalmalwareanalysis.log and a list of different key inputs and strings with all character values. This leads us to believe that the program is creating a log file and storing all our inputs into said file. We can confirm this by typing some stuff into our computer and opening up the log file, showing everything we had just typed. Using regshot we can also see that different processes and files were being added and manipulated during the time we ran the file. Lastly, Wireshark did not show any DNS or GET requests, suggesting that this file does not communicate with a network or send out our information.
