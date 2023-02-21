@@ -146,3 +146,19 @@ Now for the static analysis. Inserting this file into Dependency Walker shows us
 Now for our dynamic analysis. Before running our program I set up Wireshark, Process Explorer, Procmon, and Regshot. Using Wireshark, we are able to see the program send a DNS request to the URL found earlier and, after establishing communication, we send a TCP request and receive an SSL packet in return. This shows that the program is trying to communicate with our system and most likely send our information or have us download information from an outside source. Otherwise, I see no other traffic using Wireshark.
 
 Using Process Explorer, we can see what files our program is using and exporting more in depth. While analyzing Lab03-01.exe, we see that it imports a lot DLL files than we saw in Dependency Walker, with about 20 DLL files being used now. Utilizing Procmon, we see that the program is indeed sending and receiving TCP requests, as well as the program has been reading and writing to a lot of files. This is further backed up by Regshot, which shows that there were 24 values added and 11 values modified after running our program.
+
+## Lab 3-2
+### Executive Summary
+
+
+
+### Indications of Compromise
+
+
+
+### Mitigations
+
+
+
+### Evidence
+
