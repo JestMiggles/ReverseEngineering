@@ -117,6 +117,8 @@ Using PEview and Dependency Walker, we are able to see that this file is, as far
 
 # Week 3 - Dynamic Analysis
 
+For this week, we learned how to utilize services such as Wireshark and Procmon to analyze malware and see what they're doing after we run them.
+
 ## Lab 3-1
 ### Executive Summary
 
@@ -139,4 +141,8 @@ Some ways that we can mitigate the potential threat this program imposes on our 
 
 When putting the file into VirusTotal, we see that this file has been pinged as malware by multiple different sites. We see also that the hash matches what we found when analyzing the file for its hash and that the file is supposedly packed. It is packed with PENinja, however I could not find a reliable source to download this packer so I was unable to unpack it, so we'll just have to analyze it without unpacking.
 
-Now for the static analysis. Inserting this file into Dependency Walker shows us that there is only one module within the file, kernel32.dll, and one process that was being ran with it, ExitProcess. This is suspiscious since we would expect our program to be doing much more, so I will check to see if maybe it is packed. After using PEview I see no obvious signs of it being packed, however when using VirusTotal saw that it was. Using strings on the file showed us that 
+Now for the static analysis. Inserting this file into Dependency Walker shows us that there is only one module within the file, kernel32.dll, and one process that was being ran with it, ExitProcess. This is suspiscious since we would expect our program to be doing much more, so I will check to see if maybe it is packed. After using PEview I see no obvious signs of it being packed, however when using VirusTotal saw that it was. Using strings on the file shows us that there is a file being imported, vmx32to64.exe, and a website that we are most likely communicating with, www.practicalmalwareanalysis.com, and some internet requests, such as cks, ttp, and CONNECT %s:%i HTTP/1.0.
+
+Now for our dynamic analysis. Before running our program I set up Wireshark, Process Explorer, Procmon, and Regshot. Using Wireshark, we are able to see the program send a DNS request to the URL found earlier and, after establishing communication, we send a TCP request and receive an SSL packet in return. This shows that the program is trying to communicate with our system and most likely send our information or have us download information from an outside source. Otherwise, I see no other traffic using Wireshark.
+
+Using Process Explorer, we can see what files our program is using and exporting more in depth. While analyzing Lab03-01.exe, we see that it imports a lot DLL files than we saw in Dependency Walker, with about 20 DLL files being used now. Utilizing Procmon, we see that the program is indeed sending and receiving TCP requests, as well as the program has been reading and writing to a lot of files. This is further backed up by Regshot, which shows that there were 24 values added and 11 values modified after running our program.
