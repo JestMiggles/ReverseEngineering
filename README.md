@@ -114,3 +114,29 @@ Ways to mitigate the damage that this file can have on your system or network is
 Putting the file into VirusTotal shows us that this file has been circulating since 2011-07-05 and that it was *supposedly* created 2019-08-30 which I personally found funny.
 
 Using PEview and Dependency Walker, we are able to see that this file is, as far as I could tell, not packed or otherwise encrypted. Looking through the "SECTION .data" part of our file using PEview reveals that our program has created two files in our system32 directory: wupdmgr.exe and winup.exe. After looking up these files online I found that these are used to track keyboard input, files that are being accessed, and open Internet and LAN ports. Then, after looking in the "SECTION .rsrc" part of our file we find a link presumably being used in tandom with the files wupdmgrd.exe and winup.exe. Although the domain is not currently owned, I would presume that the file wupdmgrd.exe is used to send the information collected to the URL to be collected.
+
+# Week 3 - Dynamic Analysis
+
+## Lab 3-1
+### Executive Summary
+
+After analyzing Lab03-01, we find that:
+* The file is packed.
+* It communicates with a website.
+* When ran, can 
+
+### Indicators of Compromise
+
+Some indicators that we were compromised are the hash of the file Lab03-01.exe matching the hash of the file vmx32to64.exe and that the malware was communicating with a website: www.practicalmalwareanalysis.com.
+
+MD5 Hash (both files): d537acb8f56a1ce206bc35cf8ff959c0
+
+### Mitigations
+
+Some ways that we can mitigate the potential threat this program imposes on our system is by searching all affected machines and those on the same network for files with the same hash and remove them, drop all packages sent to us from the site mentioned above, and block the site from sending or receiving information from us.
+
+### Evidence
+
+When putting the file into VirusTotal, we see that this file has been pinged as malware by multiple different sites. We see also that the hash matches what we found when analyzing the file for its hash and that the file is supposedly packed. It is packed with PENinja, however I could not find a reliable source to download this packer so I was unable to unpack it, so we'll just have to analyze it without unpacking.
+
+Now for the static analysis. Inserting this file into Dependency Walker shows us that there is only one module within the file, kernel32.dll, and one process that was being ran with it, ExitProcess. This is suspiscious since we would expect our program to be doing much more, so I will check to see if maybe it is packed. After using PEview I see no obvious signs of it being packed, however when using VirusTotal saw that it was. Using strings on the file showed us that 
