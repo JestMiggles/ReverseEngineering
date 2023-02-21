@@ -167,4 +167,6 @@ Ways to mitigate the damage this malware can do to your system and systems on yo
 
 ### Evidence
 
-Sticking our DLL file into VirusTotal, we can see that 59 out of the 69 websites that it was tested on say it was malware, confirming our suspicions.
+Sticking our DLL file into VirusTotal, we can see that 59 out of the 69 websites that it was tested on say it was malware, confirming our suspicions that this program is malicious. We also see no evidence of the program being packed, which is also a good sign for us.
+
+Moving on, we can now get into the static analysis. First, we'll use PEview to see what we can find out about this file. From my analysis, it does not seem like the file is packed, confirming what we saw on VirusTotal. We can also see a lot of different functions that are being implemented by the program, with some of note being InternetConnectA, HttpOpenRequestA, HttpSendRequestA, and installA. These functions lead me to believe that the program is made to connect to the internet and send or receive information, as well as installA leads me to believe we will have to download the services required to run this software. Using strings, we can see some other evidence to support our idea of internet service being important.
