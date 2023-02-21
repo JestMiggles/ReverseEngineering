@@ -169,4 +169,22 @@ Ways to mitigate the damage this malware can do to your system and systems on yo
 
 Sticking our DLL file into VirusTotal, we can see that 59 out of the 69 websites that it was tested on say it was malware, confirming our suspicions that this program is malicious. We also see no evidence of the program being packed, which is also a good sign for us.
 
-Moving on, we can now get into the static analysis. First, we'll use PEview to see what we can find out about this file. From my analysis, it does not seem like the file is packed, confirming what we saw on VirusTotal. We can also see a lot of different functions that are being implemented by the program, with some of note being InternetConnectA, HttpOpenRequestA, HttpSendRequestA, and installA. These functions lead me to believe that the program is made to connect to the internet and send or receive information, as well as installA leads me to believe we will have to download the services required to run this software. Using strings, we can see some other evidence to support our idea of internet service being important. We can see a URL (www.practicalmalwareanalysis.com) and some interesting commands that may be linked to helping our malware, such as "%SystemRoot%\System32\svchost.exe -k netsvcs", which after some research is mostly harmlessbut can act as a way for malware to hide itself.
+Moving on, we can now get into the static analysis. First, we'll use PEview to see what we can find out about this file. From my analysis, it does not seem like the file is packed, confirming what we saw on VirusTotal. We can also see a lot of different functions that are being implemented by the program, with some of note being InternetConnectA, HttpOpenRequestA, HttpSendRequestA, and installA. These functions lead me to believe that the program is made to connect to the internet and send or receive information, as well as installA leads me to believe we will have to download the services required to run this software. Using strings, we can see some other evidence to support our idea of internet service being important. We can see a URL (www.practicalmalwareanalysis.com) and some interesting commands that may be linked to helping our malware, such as "%SystemRoot%\System32\svchost.exe -k netsvcs", which after some research is mostly harmlessbut can act as a way for malware to hide itself. We also see the name IPRIP which will come in handy later. Using Dependency Walker we don't really see anything else of substantial value.
+
+Now for our dynamic analysis. First, we need to find out how to run the malware. Looking through the static analysis we can utilize the installA function to run the DLL file by using the command "rundll32.exe Lab03-02.dll, installA". After this is ran, we will notice IPRIP show up in our services, and then we will run IPRIP using the command "net start IPRIP". After we do this, we notice that the program has now hidden the DLL in svchost.exe on PID 1088. Using this PID and pluggin it into Procmon, we can now analyze what the program is doing. We will notice a lot of files being opened, read, and written in from the svchost we found. Also, using Wireshark, we can see that the program had a DNS request sent to the URL we found above and, afterwards, used a GET request for the file serve.html, which we can assume is doing something in the background of our system. Using Regshot we can also see that many of our files were indeed being manipulated after we ran the program.
+
+
+## Lab 3-3
+### Executive Summary
+
+
+
+### Indicators of Compromise
+
+
+
+### Mitigations
+
+
+
+### Evidence
