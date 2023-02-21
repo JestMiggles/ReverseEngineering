@@ -125,7 +125,7 @@ For this week, we learned how to utilize services such as Wireshark and Procmon 
 After analyzing Lab03-01, we find that:
 * The file is packed.
 * It communicates with a website.
-* When ran, can 
+* When ran, can manipulate our files and write more
 
 ### Indicators of Compromise
 
@@ -150,15 +150,21 @@ Using Process Explorer, we can see what files our program is using and exporting
 ## Lab 3-2
 ### Executive Summary
 
-
+After analyzing this file, we find that:
+* This file is not packed
+* Communicates with outside website
+* Creates other processes and files
 
 ### Indications of Compromise
 
+Some indicators that we have been compromised are the processes that it imports and the website included (www.practicalmalwareanalysis.com).
 
+MD5 Hash: 84882c9d43e23d63b82004fae74ebb61 
 
 ### Mitigations
 
-
+Ways to mitigate the damage this malware can do to your system and systems on your network are to search for all files with the same hash as shown above and block all communication from the website, dropping packages if they come in.
 
 ### Evidence
 
+Sticking our DLL file into VirusTotal, we can see that 59 out of the 69 websites that it was tested on say it was malware, confirming our suspicions.
