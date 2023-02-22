@@ -19,7 +19,37 @@ You would find a collection of the files global and static local variables.
 
 **5. What is the heap used for?**
 
+The heap is used for allocating space for new values and freeing space when said values are no longer of use.
 
+**6. What is in the code section of a program's virtual memory space?**
+
+The executable code is in the program's virtual memory space.
+
+**7. What does the `inc` instruction do, and how many operands does it take?**
+
+The `inc` instruction increments a register by one and is a single operand.
+
+**8. If I perform a `div` instruction, where would I find the remainder of the binary division (modulo)?**
+
+If you perform the `div` instruction, you will find the remainder of the modulo in the EDX register.
+
+**9. How does `jz` decide whether to jump or not?**
+
+`jz` decides whether to jump based on the ZF flag. If the ZF flag is 1, it jumps. Otherwise, it doesn't jump.
+
+**10. How does `jne` decide whether to jump or not?**
+
+`jne` decides whether to jump or not based on the ZF flag. If the ZF flag is 0, it jumps, otherwise it doesn't.
+
+**11. What does a `mov` instruction do?**
+
+A `mov` instruction can move data into registers or RAM.
+
+**12. What does the `TF` flag do and why is it useful for debugging?**
+
+The `TF` flag makes it so that the processor will only execute one instruction at a time, making it easier to see what your code is doing and where the error may be occuring.
+
+I WILL DO THE REST LATER, ITS MY BIRTHDAY AND I WANNA CELEBRATE. IF YOU SEE THIS BEFORE I FINISH JUST KNOW I WILL TAKE ANY LATE PENALTIES THIS MAY CAUSE ME. THANKS AND HAVE A GOOD DAY :D
 
 ## CS 579 Questions
 
