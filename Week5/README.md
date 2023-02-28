@@ -1,4 +1,5 @@
 * Week 5
+
 *** Crackme 1 Solution:
 
 To solve this crackme, you need to download the file `crackMe1.py`. My solution goes through each rule and makes sure it passes it correctly before moving onto the next. I created an array of all possible characters that could be used, and would randomly select elements from said array until I found a combination that worked for the selected rule.
