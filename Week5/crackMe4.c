@@ -40,7 +40,5 @@ int main(){
 
     printf("Final code is: %s\n",Piece2);
     return 0;
-
-    
 }
 
