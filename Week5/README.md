@@ -1,10 +1,10 @@
-* Week 5
+# Week 5
 
-*** Crackme 1 Solution:
+### Crackme 1 Solution:
 
 To solve this crackme, you need to download the file `crackMe1.py`. My solution goes through each rule and makes sure it passes it correctly before moving onto the next. I created an array of all possible characters that could be used, and would randomly select elements from said array until I found a combination that worked for the selected rule.
 
-*** How I Cracked It
+### How I Cracked It
 
 1. We tested the code in terminal.
 2. We found that we need to enter a 19 character string, and that if we get it wrong, the file deletes itself.
