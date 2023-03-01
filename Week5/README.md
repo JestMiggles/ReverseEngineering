@@ -4,7 +4,7 @@
 
 To solve this crackme, you need to download the file `crackMe1.py`. My solution goes through each rule and makes sure it passes it correctly before moving onto the next. I created an array of all possible characters that could be used, and would randomly select elements from said array until I found a combination that worked for the selected rule.
 
-### How I Cracked It
+### How I Cracked It:
 
 1. We tested the code in terminal.
 2. We found that we need to enter a 19 character string, and that if we get it wrong, the file deletes itself.
@@ -23,3 +23,10 @@ To solve this crackme, you need to download the file `crackMe1.py`. My solution 
 15. Finally, we move on to `cracker`.
 16. For this, we need to make sure that elements 14, 4, and 9 added together equal 0x87, and the only way to achieve this is to make them all equal to `"-"`.
 17. Finally, we need to make the remaining elements that weren't changed into random characters declared earlier.
+
+
+### Crackme 5 Solution:
+
+
+
+### How I Cracked It:
