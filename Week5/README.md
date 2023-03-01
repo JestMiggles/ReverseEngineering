@@ -18,4 +18,8 @@ To solve this crackme, you need to download the file `crackMe1.py`. My solution 
 10. We see to pass the first one, we need elements to be within 10 ASCII values of one another.
 11. Then, we need elements 3 and 15 to be equal to said comparison, so we set them equal to those in our code.
 12. Next, we move onto `scissors`.
-13. 
+13. We first have to make sure that the sum of both elements 2 and 1 combined are less than 0xab, and the same for elements 17 and 16.
+14. Then, we have to make sure that they are not equal to pass the second test.
+15. Finally, we move on to `cracker`.
+16. For this, we need to make sure that elements 14, 4, and 9 added together equal 0x87, and the only way to achieve this is to make them all equal to `"-"`.
+17. Finally, we need to make the remaining elements that weren't changed into random characters declared earlier.
