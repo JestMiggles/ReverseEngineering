@@ -14,7 +14,7 @@ You have decrypted the message. Good job!
 
 Go NMSU RE!"
 
-Will add screenshots when I get home as Ghidra is on my other PC and my wifi is out currently :'D
+The picture of my code after creating labels and naming variables for `ransomware1.py` is in the file `ransom1pic.png`. Sorry for the poor quality, my computer was messing up screenshotting so I took pictures.
 
 ### Ransomware 2
 
@@ -30,7 +30,7 @@ You have decrypted the message. Good job!
 
 Go NMSU RE!"
 
-Will add screenshots when I get home as Ghidra is on my other PC and my wifi is out currently :'D
+The picture of my code after creating labels and naming variables for `ransomware2.py` is in the file `ransom2pic.png`. Sorry for the poor quality, my computer was messing up screenshotting so I took pictures.
 
 ### Ransomware 3
 
@@ -46,4 +46,4 @@ You have decrypted the message. Good job!
 
 Go NMSU RE!"
 
-Will add screenshots when I get home as Ghidra is on my other PC and my wifi is out currently :'D
+The picture of my code after creating labels and naming variables for `ransomware3.py` is in the file `ransom3pic.png`. Sorry for the poor quality, my computer was messing up screenshotting so I took pictures.
