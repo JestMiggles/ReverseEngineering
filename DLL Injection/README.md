@@ -10,4 +10,6 @@
 
 **4) This malware does something every ______ seconds. How often, and where is the loop where that waiting happens?**
 
+This malware does something every 60,000 milliseconds, or 60 seconds. This loop is within our program `Lab12-01.dll` and is in the function I renamed to injection.
+
 **5) What does the malware do every _______ seconds?**
