@@ -1,0 +1,15 @@
+mov $0x3B, %rax
+
+pushq $00 68 73 2f 6e 69 62 2f
+maybe: pushq $ 68 73 2f 6e 69 62 2f
+
+xor %rdx, %rdx
+push %rdx
+mov %rsp, %rsi
+mov %rsp, %rdx
+
+gdb: x/i $rip (read as instruction)
+si (step into, do one instruction)
+x/x $rdx (show value in register as hex value)
+info reg (show registers)
+disassemble main || disas main
