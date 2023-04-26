@@ -28,14 +28,18 @@ Line 10: Move this address into register `rdi`.
 
 Line 11: Move the value `0x3B` into register `rax`.
 
-Line 12: Call the system with our values and addresses all in order.
+Line 12: Shift `rax` right 24 bits to clear register of unseen NULL characters being pushed into our bytes.
+
+Line 13: Call the system with our values and addresses all in order.
 
 **3. Report how many bytes total are in your assembly, and include the whole thing in ascii**
 
-My program is currently 41 bytes long. I am currently working on creating the python script to print out all the bytes.
+My program is currently 45 bytes long. In order to see the bytes and the length, first type `make` into the terminal to compile the files `shellcode.S` and `shellcode_tester.c`. Then, run the file `bytes.py` by typing `python3 bytes.py` and this should output the bytes.
 
 **4. Explain what you did to ensure there were no NULL bytes in your code.**
 
 To ensure no NULL bytes in the first part, I XORed the register `rax` with itself so that the value in there would be equal to zero. Then, I pushed the address.
 
 To ensure there were no NULL values when pushing the string `/bin/sh`, I instead pushed the string without NULL values at the beginning and instead added two random characters to the end of the string. Then, I performed a right shift by 8 bits so that the extra two random characters would be pushed off and replaced with two NULL values in the beginning of the string.
+
+To ensure that the pushing of `0x3B` had no bytes pushed, I instead pushed `0x3BFFFFFF` and shifted the register right by 24 bits to clear the bytes of any NULL characters being pushed and being seen in our ASCII values.
