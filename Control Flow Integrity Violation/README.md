@@ -2,4 +2,8 @@
 
 ## Report
 
-We designed our injection program in Python3. We first 
+We designed our injection program in Python3 and named it `pwntools.py`. To run our program, type in the command line `python3 pwntools.py`.
+
+We first set our ELF file to our program `pizza` and load our shellcode program into the variable `shellcode`. Next, we start up the `pizza` process. We read in lines from the process until we reach our first section of code that requests input. We decide to send the string `Cantinflas` to see the input and follow it with `%p`'s to see what information we can get out of the program. After using seven `%p`'s, we find an address that looks like the stack's address. We then save this address to a new variable we decide to call `leak` as an integer in base 16. We then decide to displace this address by `0x20` because of the stack moving throughout our program running. We find this out through testing the program.
+
+Next, we read in lines until we see our next spot where we must input information. We send the number 10 because there's not much information we need from this section and just need to get through it. Finally, we read in lines from the process until we reach the final destination that requests user input. Here, we are able to finally inject our shellcode into the program and take control of the user system. We do this by filling up our input with a ton of A's and C's. Then, we append the location of the stack and append our shellcode program's bytes to the end. This will allow us to change the return address to the location of our shellcode and execute it. Lastly, we send our program into interactive mode to see whether our program worked. If everything was set correctly, we should be able to use commands and navigate the programs location.
